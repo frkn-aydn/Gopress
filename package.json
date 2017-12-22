@@ -1,0 +1,42 @@
+{
+  "name": "Gopress",
+  "version": "1.0.0",
+  "description": "Free and open-source content management system (CMS) based on Golang",
+  "main": "server/main.go",
+  "scripts": {
+    "start": "go run server/main.go",
+    "build": "node build/build.js"
+  },
+  "keywords": ["gopress", "blog", "cms"],
+  "author": "Muhammed Furkan Aydın <developeraydin@gmail.com>",
+  "license": "GNU GPLv3",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "chalk": "^2.3.0",
+    "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.2.3",
+    "css-loader": "^0.28.7",
+    "dotenv": "^4.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.5",
+    "html-loader": "^0.5.1",
+    "html-webpack-inline-source-plugin": "0.0.9",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "node-notifier": "^5.1.2",
+    "offline-plugin": "^4.8.5",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "ora": "^1.3.0",
+    "style-ext-html-webpack-plugin": "^3.4.5",
+    "style-loader": "^0.19.0",
+    "sw-precache-webpack-plugin": "^0.11.4",
+    "sweetalert": "^2.1.0",
+    "uglifyjs-webpack-plugin": "^1.1.3",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.10.0"
+  }
+}
