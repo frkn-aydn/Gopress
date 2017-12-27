@@ -9,15 +9,19 @@ func AppHandler(app iris.Party) {
 		ctx.View("index.html")
 	})
 
-	app.Get("/demo", func(ctx iris.Context) {
-		ctx.View("demo.html")
+	app.Get("/resume", func(ctx iris.Context) {
+		ctx.View("resume.html")
 	})
 
-	app.Get("/register", func(ctx iris.Context) {
-		ctx.View("register.html")
+	app.Get("/blog", func(ctx iris.Context) {
+		ctx.View("blog.html")
 	})
 
-	app.Get("/dashboard", func(ctx iris.Context) {
-		ctx.View("dashboard.html")
+	app.Get("/contact", func(ctx iris.Context) {
+		ctx.View("contact.html")
+	})
+
+	app.Get("/hire", func(ctx iris.Context) {
+		ctx.View("hire.html")
 	})
 }
