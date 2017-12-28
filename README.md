@@ -24,4 +24,5 @@ After installing the necessary dependencies, run these commands following order.
 3. ```cd Gopress```
 4. ```npm install```
 5. ```cd server && go get && cd ..```
-6. ```go run server/main.go ..```
+6. ```npm run build```
+6. ```npm start```
