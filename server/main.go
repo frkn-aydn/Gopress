@@ -1,9 +1,9 @@
 package main
 
 import (
+	"Gopress/server/routers"
 	"encoding/json"
 	"fmt"
-	"gopress/server/routers"
 	"io/ioutil"
 	"os"
 	"runtime"
