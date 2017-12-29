@@ -1,6 +1,8 @@
 package routers
 
 import (
+	"fmt"
+
 	"github.com/kataras/iris"
 )
 
@@ -15,6 +17,12 @@ func AppHandler(app iris.Party) {
 
 	app.Get("/blog", func(ctx iris.Context) {
 		ctx.View("blog.html")
+	})
+
+	app.Get("/blog/{url:string}", func(ctx iris.Context) {
+		postUrl := ctx.Params().GetDecoded("url")
+		fmt.Println(postUrl)
+		ctx.View("article.html")
 	})
 
 	app.Get("/contact", func(ctx iris.Context) {
