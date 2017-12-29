@@ -6,14 +6,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"regexp"
 	"runtime"
-	"time"
 
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/middleware/logger"
-	"github.com/kataras/iris/sessions"
-	"github.com/kataras/iris/sessions/sessiondb/redis"
-	"github.com/kataras/iris/sessions/sessiondb/redis/service"
 )
 
 func main() {
@@ -35,24 +32,6 @@ func main() {
 	var config ConfigType
 	json.Unmarshal(configFile, &config)
 	fmt.Println("Config file inserted...")
-
-	// Redis session added...
-	db := redis.New(service.Config{
-		Network:     service.DefaultRedisNetwork,
-		Addr:        service.DefaultRedisAddr,
-		Password:    "",
-		Database:    "",
-		MaxIdle:     0,
-		MaxActive:   0,
-		IdleTimeout: service.DefaultRedisIdleTimeout,
-		Prefix:      ""})
-	iris.RegisterOnInterrupt(func() {
-		db.Close()
-	})
-
-	// Session config added...
-	sess := sessions.New(sessions.Config{Cookie: "sessionscookieid", Expires: 45 * time.Minute})
-	sess.UseDatabase(db)
 
 	// Iris started...
 	app := iris.New()
@@ -92,6 +71,25 @@ func main() {
 	case "active":
 		app.PartyFunc("/", routers.AppHandler)
 		app.PartyFunc("/api/", routers.ApiHandler)
+		app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
+			matched, err := regexp.MatchString("api", ctx.Path())
+			if err != nil {
+				// [TODO] Do somthin gwhen regex gives an error
+				fmt.Println(err)
+			}
+			if matched {
+				type Response struct {
+					Success bool   `json:"success"`
+					Error   string `json:"error"`
+				}
+				ctx.JSON(Response{
+					Success: false,
+					Error:   "Endpoint not found.",
+				})
+			} else {
+				ctx.View("not-found.html")
+			}
+		})
 	default:
 		app.Get("/", func(ctx iris.Context) {
 			ctx.ViewData("title", title)
