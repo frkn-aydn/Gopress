@@ -32,6 +32,7 @@ const webpackConfig = {
 		publicPath: '/',
 		chunkFilename: 'js/[id].[chunkhash].js'
 	},
+	watch : true,
 	plugins: [
 		new CleanWebpackPlugin([
 			"public",
@@ -211,7 +212,8 @@ webpackConfig.plugins.push(new OfflinePlugin({
 		minify: true,
 		cacheName: "Housepecker",
 		navigateFallbackURL: "/",
-		events: true
+		events: true,
+		AppCache: null
 	},
 	AppCache: {
 		events: true
