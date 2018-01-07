@@ -60,6 +60,9 @@ func main() {
 
 			ctx.View("coming-soon.html")
 		})
+		app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
+			ctx.View("not-found.html")
+		})
 	case "maintenance":
 		app.Get("/", func(ctx iris.Context) {
 			ctx.ViewData("title", title)
@@ -67,6 +70,9 @@ func main() {
 			ctx.ViewData("keywords", keywords)
 
 			ctx.View("maintenance.html")
+		})
+		app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
+			ctx.View("not-found.html")
 		})
 	case "active":
 		app.PartyFunc("/", routers.AppHandler)
