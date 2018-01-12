@@ -79,6 +79,7 @@
 			<div class="blog-area">
 
 				<!-- [TODO] ADD REAL DATA WITH GOLANG TEMPLATE STRING -->
+				{{if .blogpost}}
 				<div class="blog-card" data-href="#">
 					<div class="description">
 						<h1>Learning to Code</h1>
@@ -87,8 +88,6 @@
 						<a href="#">Read More</a>
 					</div>
 				</div>
-
-
 				<div class="pagination">
 					<a href="#" class="pagination-old">
 						<svg viewBox="0 0 24 24">
@@ -103,6 +102,12 @@
 						</svg>
 					</a>
 				</div>
+				{{else}}
+				<h2>I haven't had the opportunity to share an article yet.Please come back later again.</h2>
+				{{end}}
+
+
+				
 			</div>
 		</div>
 	</div>
