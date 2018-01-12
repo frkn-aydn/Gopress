@@ -4,6 +4,10 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
+type ErrorStruct interface {
+	Error() string
+}
+
 func ParseToken(unparsedToken string) (interface{}, error) {
 	token, err := jwt.Parse(unparsedToken, func(token *jwt.Token) (interface{}, error) {
 		return []byte("t1LrbFpKG5v4ENntnFeUWHOAY7cYHLUS"), nil
@@ -17,5 +21,5 @@ func ParseToken(unparsedToken string) (interface{}, error) {
 	if ok && token.Valid {
 		return claims, nil
 	}
-	return nil, err
+	return claims, err
 }
