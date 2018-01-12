@@ -1,8 +1,0 @@
-package: .
-import:
-- package: github.com/kataras/iris
-  subpackages:
-  - middleware/logger
-  - sessions
-  - sessions/sessiondb/redis
-  - sessions/sessiondb/redis/service
