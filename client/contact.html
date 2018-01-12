@@ -79,11 +79,11 @@
                 </div>
             </div>
             <div class="contact-area">
-                <form action="/api/contact" method="post">
+                <form action="/api/contact" method="post" id="contact-form">
                     <h1>{contact} me.</h1>
-                    <input name="fullname" type="text" placeholder="Full Name" required="required">
-                    <input name="email" type="email" placeholder="Your Email Address" required="required">
-                    <textarea name="message" cols="30" rows="10" placeholder="Your message" required="required"></textarea>
+                    <input id="name" name="fullname" type="text" placeholder="Full Name" required="required">
+                    <input id="email" name="email" type="email" placeholder="Your Email Address" required="required">
+                    <textarea id="message" name="message" cols="30" rows="10" placeholder="Your message" required="required"></textarea>
                     <div class="form-footer">
                         <div class="g-recaptcha" data-sitekey="6Lcozz4UAAAAAGyxlpORHdzXuO-u_jkvZH7YdMq_"></div>
                         <button type="submit" class="btn">Send</button>
