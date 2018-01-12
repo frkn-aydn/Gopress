@@ -6,6 +6,7 @@ import (
 	"github.com/kataras/iris"
 )
 
+// AppHandler function serving all HTML files with SEO friendly URLs
 func AppHandler(app iris.Party) {
 	app.Get("/", func(ctx iris.Context) {
 		ctx.View("index.html")
@@ -20,8 +21,8 @@ func AppHandler(app iris.Party) {
 	})
 
 	app.Get("/blog/{url:string}", func(ctx iris.Context) {
-		postUrl := ctx.Params().GetDecoded("url")
-		fmt.Println(postUrl)
+		postURL := ctx.Params().GetDecoded("url")
+		fmt.Println(postURL)
 		ctx.View("article.html")
 	})
 
@@ -29,7 +30,11 @@ func AppHandler(app iris.Party) {
 		ctx.View("contact.html")
 	})
 
-	app.Get("/hire", func(ctx iris.Context) {
-		ctx.View("hire.html")
+	app.Get("/login", func(ctx iris.Context) {
+		ctx.View("login.html")
+	})
+
+	app.Get("/register", func(ctx iris.Context) {
+		ctx.View("register.html")
 	})
 }
