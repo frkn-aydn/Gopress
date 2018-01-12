@@ -76,7 +76,7 @@ func main() {
 		})
 	case "active":
 		app.PartyFunc("/", routers.AppHandler)
-		app.PartyFunc("/api/", routers.ApiHandler)
+		app.PartyFunc("/api/", routers.APIHandler)
 		app.OnErrorCode(iris.StatusNotFound, func(ctx iris.Context) {
 			matched, err := regexp.MatchString("api", ctx.Path())
 			if err != nil {
