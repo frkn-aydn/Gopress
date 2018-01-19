@@ -8,6 +8,7 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin")
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 const path = require("path");
@@ -32,7 +33,7 @@ const webpackConfig = {
 		publicPath: '/',
 		chunkFilename: 'js/[id].[chunkhash].js'
 	},
-	watch : true,
+	watch: false,
 	plugins: [
 		new CleanWebpackPlugin([
 			"public",
@@ -42,7 +43,10 @@ const webpackConfig = {
 			dry: false,
 			verbose: true
 		}),
-		extractLess
+		extractLess,
+		new ScriptExtHtmlWebpackPlugin({
+			defaultAttribute: 'async'
+		  })
 	],
 	module: {
 		rules: [{
@@ -177,6 +181,7 @@ utils.getFiles(targetFolder).forEach(file => {
 				removeComments: true,
 				collapseWhitespace: true
 			},
+			async:[fileInfo.name],
 			chunks: [fileInfo.name],
 			inlineSource: '.(css)$'
 		}))
@@ -212,8 +217,7 @@ webpackConfig.plugins.push(new OfflinePlugin({
 		minify: true,
 		cacheName: "Housepecker",
 		navigateFallbackURL: "/",
-		events: true,
-		AppCache: null
+		events: true
 	},
 	AppCache: {
 		events: true
