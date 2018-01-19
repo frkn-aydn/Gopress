@@ -22,3 +22,5 @@ package-lock.json
 #Webpack output
 server/public
 server/views
+
+gopress*
