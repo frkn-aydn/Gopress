@@ -4,10 +4,15 @@
     display: block;
     padding: 15px;
     .info {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
         text-align: center;
         margin-top: 10px;
         margin-bottom: 25px;
+        width: 100%;
+        height: auto;
         svg {
             margin: auto;
         }
@@ -16,11 +21,15 @@
             color: #202020;
             margin-bottom: 25px;
             text-decoration: none;
+            min-width: 150px;
             width: 50%;
             float: left;
             text-align: center;
             span{
                 display: block;
+                width: 100%;
+                text-overflow: ellipsis;
+                overflow: hidden
             }
         }
     }
