@@ -31,6 +31,7 @@
     "image-webpack-loader": "^3.4.2",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
+    "mysql": "^2.15.0",
     "node-notifier": "^5.1.2",
     "offline-plugin": "^4.8.5",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
