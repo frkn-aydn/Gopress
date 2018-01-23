@@ -37,10 +37,10 @@ type RecaptchaResponse struct {
 
 // ContactStruct need documantion
 type ContactStruct struct {
-	Name    string
-	Email   string
-	Message string
-	Captcha string
+	Fullname string
+	Email    string
+	Message  string
+	Captcha  string
 }
 
 // SimpleResponse need documantion
@@ -215,12 +215,13 @@ func APIHandler(api iris.Party) {
 		req := &ContactStruct{}
 		err := ctx.ReadJSON(req)
 		if err != nil {
+			fmt.Println(err)
 			res := &SimpleResponse{false, "Bad request. Please try again later..."}
 			ctx.JSON(res)
 			return
 		}
-
-		if req.Captcha == "" || req.Email == "" || req.Message == "" || req.Name == "" {
+		fmt.Println(req)
+		if req.Captcha == "" || req.Email == "" || req.Message == "" || req.Fullname == "" {
 			res := &SimpleResponse{false, "Missing fields. Please try again later..."}
 			ctx.JSON(res)
 			return
@@ -242,9 +243,10 @@ func APIHandler(api iris.Party) {
 			return
 		}
 
-		_, err = db.Query("INSERT INTO contacts SET email=?, message=?, name=?", req.Email, req.Message, req.Name)
+		_, err = db.Query("INSERT INTO contacts SET email=?, message=?, name=?", req.Email, req.Message, req.Fullname)
 		defer db.Close()
 		if err != nil {
+			fmt.Println(err)
 			res := &SimpleResponse{false, "Error occurred while retrieving your request."}
 			ctx.JSON(res)
 			return
