@@ -22,7 +22,9 @@ document.getElementById("contact-form").addEventListener("submit", e => {
     ajax.open("POST", "/api/contact", true);
     ajax.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     ajax.onload = function () {
-        console.log(ajax.response)
+        const data = JSON.parse(ajax.response);
+        if(!data || !data.Success) return alert(data.Message || "Something happend. Please contact me with this email : enterdarkside@gmail.com")
+        return alert(data.Message)
     }
     ajax.send(JSON.stringify({
         Email: email.value,
