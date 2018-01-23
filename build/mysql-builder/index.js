@@ -14,7 +14,7 @@ connection.query(`CREATE DATABASE IF NOT EXISTS ${structure.database} DEFAULT CH
         console.log(err)
         throw err;
     }
-    config.database = structure.database;
+    dbConfig.database = structure.database;
     connection = mysql.createConnection(dbConfig)
     structure.tables.forEach(table => {
         const rows = table.rows;
