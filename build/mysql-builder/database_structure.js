@@ -10,10 +10,10 @@ module.exports = {
     database : database,
     tables : [
         {
-            name : "users",
+            name : "contacts",
             rows : {
                 id : "INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY",
-                email : "VARCHAR(200) NULL, UNIQUE INDEX `email_UNIQUE` (`email` ASC)",
+                email : "VARCHAR(200)",
                 message : "VARCHAR(500)",
                 name : "VARCHAR(100)"
             }
